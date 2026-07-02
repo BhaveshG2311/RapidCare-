@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RapidCare - Hospitals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#da3433",
+                      "on-tertiary-fixed": "#001945",
+                      "secondary-fixed": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#4772ce",
+                      "surface-container": "#ebeef1",
+                      "outline": "#717783",
+                      "surface": "#f7fafd",
+                      "primary-container": "#1976d2",
+                      "on-surface": "#181c1e",
+                      "on-primary-fixed-variant": "#004786",
+                      "surface-dim": "#d7dadd",
+                      "secondary": "#b6171e",
+                      "surface-container-high": "#e5e8eb",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#181c1e",
+                      "on-secondary-container": "#fffbff",
+                      "on-primary-fixed": "#001c3a",
+                      "on-surface-variant": "#414752",
+                      "on-tertiary-fixed-variant": "#00429c",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#930010",
+                      "secondary-fixed-dim": "#ffb3ac",
+                      "primary-fixed-dim": "#a5c8ff",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#f7fafd",
+                      "surface-tint": "#005faf",
+                      "primary": "#005dac",
+                      "tertiary-fixed": "#d9e2ff",
+                      "inverse-on-surface": "#eef1f4",
+                      "background": "#f7fafd",
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#fffdff",
+                      "tertiary-fixed-dim": "#b0c6ff",
+                      "outline-variant": "#c1c6d4",
+                      "on-secondary-fixed": "#410003",
+                      "surface-container-low": "#f1f4f7",
+                      "inverse-surface": "#2d3133",
+                      "surface-variant": "#e0e3e6",
+                      "on-primary-container": "#fffdff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#a5c8ff",
+                      "surface-container-highest": "#e0e3e6",
+                      "tertiary": "#2959b3",
+                      "primary-fixed": "#d4e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "stack-lg": "24px",
+                      "stack-sm": "8px",
+                      "touch-target": "48px",
+                      "stack-md": "16px",
+                      "margin-mobile": "20px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-1px", "fontWeight": "700"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for web */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c1c6d4; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #717783; }
+        
+        .pulse-primary {
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(0, 93, 172, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(0, 93, 172, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 93, 172, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-lg min-h-screen pb-24 md:pb-0 pt-14 flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-40 bg-surface text-primary border-b border-outline-variant shadow-sm flex items-center justify-between px-margin-mobile h-14 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A close-up headshot of a confident young professional looking directly at the camera. The lighting is soft and natural, emphasizing a modern, trustworthy aesthetic. The background is a blurred, light-toned office environment. The image feels clean, crisp, and aligns with a professional healthcare or tech application user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByvr_sCmvyEFdX6xH59IeZPX4vfCepDWYvdDgPMTark-i1Clz-e--F6KpI45GcY78ZtFif9xHgPBCMfvJJjgpuk15IfmETcY2fOsMnDyJT4pnUza0PymPpxIKkK7sc48tCLKEmLj4XuLYhjBVH-zj5FI_shy474PxZf4PgO3PntQt_aGrUTy0D93yZViMKt0N1gQ-kPzfVr_ris6UZZbaYtBQUFhbhtfzYSQ2anJRbUe0GhjoGkWqk_sKDhkevNl18EYA-IppKsnc"/>
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">RapidCare</span>
+</div>
+<!-- Web Navigation (Hidden on Mobile) -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high px-3 py-2 rounded-md transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">home</span> Home
+            </a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high px-3 py-2 rounded-md transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">medical_services</span> Ambulances
+            </a>
+<a class="font-label-md text-label-md text-primary font-bold bg-primary-container/10 px-3 py-2 rounded-md transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined filled text-[18px]">local_hospital</span> Hospitals
+            </a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high px-3 py-2 rounded-md transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">notifications</span> Alerts
+            </a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high px-3 py-2 rounded-md transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">person</span> Profile
+            </a>
+</nav>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out md:hidden text-primary">
+<span class="material-symbols-outlined">emergency_home</span>
+</button>
+</header>
+<main class="w-full max-w-screen-md mx-auto px-margin-mobile pt-stack-lg pb-stack-lg flex-1 flex flex-col gap-stack-lg">
+<!-- Search & Filter Area -->
+<div class="flex flex-col gap-stack-sm sticky top-14 bg-surface/95 backdrop-blur-md z-30 py-2 -mx-margin-mobile px-margin-mobile">
+<div class="relative w-full h-[56px]">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full h-full bg-surface-container-low border border-outline-variant rounded-lg pl-12 pr-4 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Search hospitals, specialties..." type="text"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="shrink-0 h-[32px] px-4 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md border border-transparent">All Hospitals</button>
+<button class="shrink-0 h-[32px] px-4 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-colors">Nearest First</button>
+<button class="shrink-0 h-[32px] px-4 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-colors">Trauma Center</button>
+<button class="shrink-0 h-[32px] px-4 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-colors">Pediatric ICU</button>
+</div>
+</div>
+<!-- Hospital List -->
+<div class="flex flex-col gap-stack-md">
+<!-- Hospital Card 1 (Urgent/Close) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0_4px_8px_rgba(71,114,206,0.05)] hover:shadow-[0_8px_16px_rgba(71,114,206,0.08)] transition-all flex flex-col sm:flex-row cursor-pointer group active:scale-[0.98]">
+<div class="h-40 sm:h-auto sm:w-48 relative shrink-0">
+<img alt="Hospital Building" class="w-full h-full object-cover" data-alt="A modern, high-tech hospital building exterior at dusk. The architecture features clean lines, expansive glass windows reflecting the twilight sky, and subtle blue lighting accents. The scene is calm but authoritative, conveying a sense of advanced medical care and 24/7 readiness. The overall aesthetic is professional, clean, and modern light-mode compatible." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB89N297YCMq1nQP0lJh0nSc-iPcZw1524iK4qwropb_tFQwD2-1RMgS5TaJWSa6pvm1axa9e-DfrEOFTVXRzo4inr-uDTVBvF-8mpUIPRS_eI4dD-Ukup2CvGqvHuK8VdX533mUxQwDLX9LM5LK7CpiNFfXZDTWrO-T66w6qkzKfQQBoUI-ABY5LwVkhM46t8qYAgoyrbN6FkjVl02XAXWWh0j1vGqAY9dGJl3XrVstk_MbJ71C-iwPTbACoHp9D1X4TaKtAUgc9w"/>
+<div class="absolute top-2 left-2 bg-surface-variant/90 backdrop-blur-sm px-2 py-1 rounded text-primary font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] filled text-tertiary">near_me</span> 1.2 km
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex justify-between items-start gap-2">
+<h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">City General Hospital</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded text-on-surface font-label-md text-label-md shrink-0">
+<span class="material-symbols-outlined text-[14px] text-[#f59e0b] filled">star</span> 4.8
+                            </div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">124 Medical Way, Downtown</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<div class="bg-secondary-fixed/30 text-secondary w-6 h-6 rounded flex items-center justify-center shrink-0 pulse-primary">
+<span class="material-symbols-outlined text-[16px]">emergency</span>
+</div>
+<span class="font-label-md text-label-md text-secondary">Level 1 Trauma Center • ER Wait: 5m</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-on-surface-variant font-label-md text-label-md flex-1">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span> 3 Ambulances Avail.
+                            </div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex-1">
+<div class="flex justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface-variant">ICU Capacity</span>
+<span class="text-tertiary">80%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-2 mt-1">
+<button class="flex-1 h-[40px] bg-primary text-on-primary rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-surface-tint transition-colors shadow-[0_4px_8px_rgba(0,93,172,0.15)] active:shadow-none">
+<span class="material-symbols-outlined text-[20px]">directions</span> Navigate
+                        </button>
+<button class="flex-1 h-[40px] bg-transparent border-[1.5px] border-primary text-primary rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">call</span> Dispatch
+                        </button>
+</div>
+</div>
+</div>
+<!-- Hospital Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0_4px_8px_rgba(71,114,206,0.05)] hover:shadow-[0_8px_16px_rgba(71,114,206,0.08)] transition-all flex flex-col sm:flex-row cursor-pointer group active:scale-[0.98]">
+<div class="h-40 sm:h-auto sm:w-48 relative shrink-0">
+<img alt="Hospital Entrance" class="w-full h-full object-cover" data-alt="A bright, welcoming daytime shot of a modern medical facility entrance. The building uses light-colored stone and extensive glass panels, surrounded by neatly manicured greenery. The atmosphere is serene, professional, and indicative of high-quality healthcare services. The color palette emphasizes light neutrals, greens, and crisp blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUvRpvBCrVnDDSix9chj2We6Sei_f7vk1VcPPNhwIlFR1yW9Xy7KdQgINL15BZea7pw9iFIOOXT1SFm1OVcJNFwu0lqKMtdSrRhmHB42DHi1EpnudQSSM4yGeHS3SoGRJ9_QeRFWmfWNI-lCn_gN-k9RvEI5i0tKD4MPzMIBDXruzUBprxr0m_QdT0E0Fs_3xmhcE0PyH5yExPfUstuxhC1lmTUsSEuQja3CyizmZA8izuSHO-oZRRnAftk7WEWhkoV2ef382uBB4"/>
+<div class="absolute top-2 left-2 bg-surface-variant/90 backdrop-blur-sm px-2 py-1 rounded text-primary font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] filled text-tertiary">near_me</span> 3.5 km
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex justify-between items-start gap-2">
+<h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">Mercy Medical Center</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded text-on-surface font-label-md text-label-md shrink-0">
+<span class="material-symbols-outlined text-[14px] text-[#f59e0b] filled">star</span> 4.6
+                            </div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">890 Wellness Blvd, Westside</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<div class="bg-surface-container-high text-on-surface-variant w-6 h-6 rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">local_hospital</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">General Hospital • ER Wait: 15m</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-on-surface-variant font-label-md text-label-md flex-1">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span> 1 Ambulance Avail.
+                            </div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex-1">
+<div class="flex justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface-variant">ICU Capacity</span>
+<span class="text-secondary">95%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Hospital Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0_4px_8px_rgba(71,114,206,0.05)] hover:shadow-[0_8px_16px_rgba(71,114,206,0.08)] transition-all flex flex-col sm:flex-row cursor-pointer group active:scale-[0.98]">
+<div class="h-40 sm:h-auto sm:w-48 relative shrink-0">
+<img alt="Childrens Hospital" class="w-full h-full object-cover" data-alt="A specialized pediatric healthcare facility viewed during the day. The building exterior features subtle, friendly color accents to make it less intimidating. The environment is clean, bright, and modern, reflecting a safe and caring medical setting. The lighting is sunny and the colors lean towards soft pastels mixed with clean whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQgYNkxhuAXNX56Q5CpU-RsjXtYaeMPJzCoBuRU_BUZqMFlybFQhJk47cu3wndi_uOtOf4-DhvVkHFyoLiuvXmFnRK6ZbX7VJfxJpi83qbD2C2KVHXGFhyi2x8tpO6cooZ8Di8YJltamZ15qK6ajEvif58Y3OsvmVG_N3hzYg9qVguUthsRqXjmps3eScN9imms0th9BlUiCnET53cdaqg19VT72YC5CDmsWOwyesRIEPAKq2WJRaCOSG8j0pjaQqB7M_jMSTRQkg"/>
+<div class="absolute top-2 left-2 bg-surface-variant/90 backdrop-blur-sm px-2 py-1 rounded text-primary font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] filled text-tertiary">near_me</span> 5.1 km
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between gap-3">
+<div>
+<div class="flex justify-between items-start gap-2">
+<h3 class="font-title-lg text-title-lg text-on-surface group-hover:text-primary transition-colors">St. Jude Children's</h3>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded text-on-surface font-label-md text-label-md shrink-0">
+<span class="material-symbols-outlined text-[14px] text-[#f59e0b] filled">star</span> 4.9
+                            </div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">45 Hope Avenue, North Hills</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<div class="bg-primary-fixed text-on-primary-fixed w-6 h-6 rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">child_care</span>
+</div>
+<span class="font-label-md text-label-md text-on-primary-fixed-variant">Pediatric Specialty • ER Wait: 8m</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-on-surface-variant font-label-md text-label-md flex-1">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span> 4 Ambulances Avail.
+                            </div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex-1">
+<div class="flex justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface-variant">PICU Capacity</span>
+<span class="text-tertiary">60%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container-lowest border-t border-outline-variant shadow-lg fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl">medical_services</span>
+<span class="font-label-md text-label-md mt-1">Ambulances</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl filled">local_hospital</span>
+<span class="font-label-md text-label-md mt-1 font-bold">Hospitals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+<span class="font-label-md text-label-md mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="font-label-md text-label-md mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

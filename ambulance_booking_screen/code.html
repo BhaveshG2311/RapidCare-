@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>RapidCare - Ambulance Booking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#da3433",
+                        "on-tertiary-fixed": "#001945",
+                        "secondary-fixed": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#4772ce",
+                        "surface-container": "#ebeef1",
+                        "outline": "#717783",
+                        "surface": "#f7fafd",
+                        "primary-container": "#1976d2",
+                        "on-surface": "#181c1e",
+                        "on-primary-fixed-variant": "#004786",
+                        "surface-dim": "#d7dadd",
+                        "secondary": "#b6171e",
+                        "surface-container-high": "#e5e8eb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#181c1e",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary-fixed": "#001c3a",
+                        "on-surface-variant": "#414752",
+                        "on-tertiary-fixed-variant": "#00429c",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#930010",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "primary-fixed-dim": "#a5c8ff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f7fafd",
+                        "surface-tint": "#005faf",
+                        "primary": "#005dac",
+                        "tertiary-fixed": "#d9e2ff",
+                        "inverse-on-surface": "#eef1f4",
+                        "background": "#f7fafd",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#fffdff",
+                        "tertiary-fixed-dim": "#b0c6ff",
+                        "outline-variant": "#c1c6d4",
+                        "on-secondary-fixed": "#410003",
+                        "surface-container-low": "#f1f4f7",
+                        "inverse-surface": "#2d3133",
+                        "surface-variant": "#e0e3e6",
+                        "on-primary-container": "#fffdff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#a5c8ff",
+                        "surface-container-highest": "#e0e3e6",
+                        "tertiary": "#2959b3",
+                        "primary-fixed": "#d4e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "touch-target": "48px",
+                        "stack-md": "16px",
+                        "margin-mobile": "20px",
+                        "gutter": "16px",
+                        "pb-safe": "env(safe-area-inset-bottom, 20px)"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-1px", "fontWeight": "700"}],
+                        "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .map-bg {
+            background-color: #e5e5e5;
+            background-image: radial-gradient(#a3a3a3 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-lg">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline shadow-sm flex items-center justify-between px-margin-mobile h-14 w-full sticky top-0 z-40 transition-colors">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-full -ml-2">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim">RapidCare</h1>
+</div>
+<button aria-label="Emergency Home" class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-full -mr-2">
+<span class="material-symbols-outlined text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col relative w-full max-w-3xl mx-auto md:border-x md:border-outline-variant/30 md:bg-surface-container-lowest">
+<!-- Map Area -->
+<div class="relative h-48 md:h-64 w-full map-bg overflow-hidden border-b border-outline-variant/50">
+<!-- Simulated Map Overlay (Abstract) -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent"></div>
+<!-- Route Path (Abstract) -->
+<svg class="absolute inset-0 w-full h-full stroke-primary opacity-50" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M20,80 Q40,40 80,20" fill="none" stroke-dasharray="4 4" stroke-width="2"></path>
+</svg>
+<!-- Location Markers -->
+<div class="absolute bottom-6 left-1/4 transform -translate-x-1/2 flex flex-col items-center">
+<div class="bg-surface text-on-surface font-label-md text-label-md px-2 py-1 rounded-md shadow-sm mb-1">Current</div>
+<span class="material-symbols-outlined text-primary text-3xl icon-filled drop-shadow-md">location_on</span>
+</div>
+<div class="absolute top-1/4 right-1/4 transform translate-x-1/2 flex flex-col items-center">
+<div class="bg-surface text-on-surface font-label-md text-label-md px-2 py-1 rounded-md shadow-sm mb-1">Hospital</div>
+<span class="material-symbols-outlined text-secondary text-3xl icon-filled drop-shadow-md">local_hospital</span>
+</div>
+</div>
+<!-- Booking Form Container -->
+<div class="flex-1 px-margin-mobile py-stack-lg flex flex-col gap-stack-lg z-10 -mt-6">
+<!-- Step 1 & 2: Locations Panel -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_8px_-2px_rgba(0,0,0,0.05)] border border-outline-variant/40 p-4">
+<div class="flex flex-col gap-4 relative">
+<!-- Vertical connecting line -->
+<div class="absolute left-4 top-8 bottom-8 w-0.5 bg-outline-variant/50 z-0"></div>
+<!-- Pickup Location -->
+<div class="flex items-center gap-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm shrink-0">
+<span class="material-symbols-outlined text-sm icon-filled">my_location</span>
+</div>
+<div class="flex-1 border-b border-outline-variant/50 focus-within:border-primary pb-2 transition-colors">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Pickup Location</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface placeholder-outline" placeholder="Enter pickup address" type="text" value="Current Location"/>
+</div>
+</div>
+<!-- Destination Hospital -->
+<div class="flex items-center gap-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-sm shrink-0">
+<span class="material-symbols-outlined text-sm icon-filled">local_hospital</span>
+</div>
+<div class="flex-1 border-b border-outline-variant/50 focus-within:border-primary pb-2 transition-colors">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Destination Hospital</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface placeholder-outline" placeholder="Select destination hospital" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Ambulance Type -->
+<section>
+<h2 class="font-title-lg text-title-lg text-on-surface mb-stack-sm">Select Ambulance Type</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- ALS Option -->
+<button class="relative flex flex-col p-4 rounded-xl border-2 border-primary bg-primary-container/10 text-left transition-all active:scale-[0.98]">
+<div class="absolute top-3 right-3 text-primary">
+<span class="material-symbols-outlined icon-filled">check_circle</span>
+</div>
+<span class="material-symbols-outlined text-3xl text-primary mb-2">medical_services</span>
+<h3 class="font-label-lg text-label-lg text-on-surface">ALS</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1 line-clamp-2">Advanced Life Support with paramedic.</p>
+<div class="mt-3 font-body-md text-body-md font-semibold text-primary">$250 - $400</div>
+</button>
+<!-- BLS Option -->
+<button class="relative flex flex-col p-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-left transition-all hover:bg-surface-container-low active:scale-[0.98]">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant mb-2">airport_shuttle</span>
+<h3 class="font-label-lg text-label-lg text-on-surface">BLS</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1 line-clamp-2">Basic Life Support for stable transport.</p>
+<div class="mt-3 font-body-md text-body-md font-semibold text-on-surface-variant">$150 - $200</div>
+</button>
+</div>
+</section>
+<!-- Fare & Details Summary -->
+<section class="bg-surface-container rounded-xl p-4 mt-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Estimated Fare</span>
+<span class="font-title-lg text-title-lg text-on-surface font-semibold">$250.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> ~15 mins ETA
+                    </span>
+<span class="font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">route</span> 4.2 miles
+                    </span>
+</div>
+</section>
+<!-- Action Button -->
+<div class="pb-stack-lg">
+<button class="w-full h-touch-target bg-primary text-on-primary rounded-full font-label-lg text-label-lg shadow-[0_4px_8px_-2px_rgba(0,0,0,0.2)] hover:bg-primary/90 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined icon-filled">emergency_share</span>
+                    Confirm Booking
+                </button>
+</div>
+<!-- Spacer for bottom nav if present (suppressed here as per transactional intent, but keeping safe area) -->
+<div class="h-4"></div>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed intentionally as this is a linear/transactional booking screen, fulfilling "Automatic Suppression" rule) -->
+<!-- Navigation shell excluded to prioritize the focused booking journey -->
+</body></html>

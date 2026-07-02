@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Emergency Guest Booking - RapidCare</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#fffdff",
+                        "on-error": "#ffffff",
+                        "background": "#f7fafd",
+                        "on-tertiary-container": "#fffdff",
+                        "on-primary-fixed": "#001c3a",
+                        "inverse-primary": "#a5c8ff",
+                        "tertiary-fixed-dim": "#b0c6ff",
+                        "outline-variant": "#c1c6d4",
+                        "on-secondary-fixed-variant": "#930010",
+                        "inverse-on-surface": "#eef1f4",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#181c1e",
+                        "on-secondary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#b6171e",
+                        "surface-bright": "#f7fafd",
+                        "secondary-container": "#da3433",
+                        "on-primary": "#ffffff",
+                        "primary": "#005dac",
+                        "surface": "#f7fafd",
+                        "on-background": "#181c1e",
+                        "primary-fixed": "#d4e3ff",
+                        "surface-container-low": "#f1f4f7",
+                        "on-tertiary-fixed": "#001945",
+                        "on-surface-variant": "#414752",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "on-secondary-fixed": "#410003",
+                        "surface-container-high": "#e5e8eb",
+                        "surface-variant": "#e0e3e6",
+                        "surface-tint": "#005faf",
+                        "primary-container": "#1976d2",
+                        "on-tertiary-fixed-variant": "#00429c",
+                        "tertiary-fixed": "#d9e2ff",
+                        "secondary-fixed": "#ffdad6",
+                        "surface-container": "#ebeef1",
+                        "surface-dim": "#d7dadd",
+                        "on-primary-fixed-variant": "#004786",
+                        "primary-fixed-dim": "#a5c8ff",
+                        "tertiary": "#2959b3",
+                        "outline": "#717783",
+                        "surface-container-highest": "#e0e3e6",
+                        "tertiary-container": "#4772ce",
+                        "inverse-surface": "#2d3133"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "touch-target": "48px",
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-1px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Pulse Animation for urgent elements */
+        @keyframes pulse-urgent {
+            0% { box-shadow: 0 0 0 0 rgba(218, 52, 51, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(218, 52, 51, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(218, 52, 51, 0); }
+        }
+        .urgent-pulse {
+            animation: pulse-urgent 2s infinite;
+        }
+
+        /* Ambient background glow */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 0%, rgba(218, 52, 51, 0.05) 0%, transparent 60%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+<div class="ambient-glow"></div>
+<!-- TopAppBar Shell (Suppressed Nav for Transactional Flow, but keeping Brand Anchor) -->
+<header class="bg-surface border-b border-outline-variant shadow-sm flex items-center justify-between px-margin-mobile h-14 w-full sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-2xl filled">emergency</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">RapidCare</span>
+</div>
+<button aria-label="Close" class="text-on-surface-variant hover:bg-surface-container-high active:scale-95 duration-150 ease-in-out p-2 rounded-full transition-colors flex items-center">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<main class="flex-grow px-margin-mobile py-stack-lg max-w-3xl mx-auto w-full pb-32">
+<!-- Header Section -->
+<div class="mb-stack-lg text-center md:text-left">
+<div class="inline-flex items-center gap-2 bg-error-container text-on-error-container px-3 py-1 rounded-full mb-3">
+<span class="material-symbols-outlined text-sm filled">warning</span>
+<span class="font-label-lg text-label-lg">Guest Emergency Booking</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface md:font-display-lg md:text-display-lg font-headline-lg-mobile text-headline-lg-mobile mb-2">Request Ambulance</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">No account required. We'll dispatch the nearest available unit immediately.</p>
+</div>
+<form class="space-y-stack-lg">
+<!-- Bento-style Form Grid -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-stack-md">
+<h2 class="font-title-lg text-title-lg mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person</span>
+                    Contact Information
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Requester Name</label>
+<input class="w-full h-[56px] rounded-lg border-outline-variant bg-surface px-4 focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md transition-colors" placeholder="Full Name" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Mobile Number</label>
+<input class="w-full h-[56px] rounded-lg border-outline-variant bg-surface px-4 focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md transition-colors" placeholder="+1 (555) 000-0000" required="" type="tel"/>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-stack-md">
+<h2 class="font-title-lg text-title-lg mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                    Patient Location
+                </h2>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">my_location</span>
+</div>
+<input class="w-full h-[56px] rounded-lg border-outline-variant bg-surface pl-12 pr-4 focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md transition-colors" placeholder="Enter exact address or landmark" required="" type="text" value="Detecting location..."/>
+<button class="absolute inset-y-0 right-2 flex items-center px-2 text-primary font-label-lg text-label-lg hover:bg-surface-container-high rounded-md my-2 transition-colors" type="button">Locate Me</button>
+</div>
+<!-- Map Placeholder -->
+<div class="mt-4 h-32 bg-surface-container rounded-lg overflow-hidden relative border border-outline-variant">
+<div class="absolute inset-0 flex items-center justify-center">
+<img alt="Map visualization showing user location" class="w-full h-full object-cover opacity-60" data-alt="A clean, modern digital map interface displayed in light mode. The map shows street-level details of an urban environment with subtle blue and grey routing lines. A prominent red medical location pin marks a central spot, surrounded by a soft pulsing radius effect indicating urgency. The overall aesthetic is professional, clear, and high-contrast suitable for an emergency response dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHbXYUrYKZ2hbBxvScF8U1qnWx_h5Biyh9Ro4ac3L80L19F6N1izBbzzPEVsYRJ7QEAtmycyx5oQ18D0-Mb7iwO-OK63uRzuNoViNRSAfKTjZGUEONR2twNeR82l0JkKxuo3Y4kFCy1GfQEPf1hfyA1wiwtuoiBO0Tzg42QRghHW2xqulI1KP67w-RMZ9XtPrRA7QCgSLSTY4ymbR1CPZ8-Kc4uW0VR_EgaC7oRQNyVIzcH1F5LGPMRwX7cZJutmf5IdjEWX33XnY"/>
+</div>
+<div class="absolute center inset-0 m-auto w-8 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl drop-shadow-md filled">location_on</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-stack-md">
+<h2 class="font-title-lg text-title-lg mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">medical_services</span>
+                    Emergency Type
+                </h2>
+<div class="flex flex-wrap gap-2 mb-4">
+<label class="cursor-pointer">
+<input class="peer sr-only" name="emergency_type" type="radio" value="cardiac"/>
+<div class="px-4 py-3 rounded-lg border border-outline-variant bg-surface peer-checked:bg-secondary-container peer-checked:text-on-secondary peer-checked:border-secondary font-label-lg text-label-lg transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">monitor_heart</span>
+                            Cardiac
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="emergency_type" type="radio" value="trauma"/>
+<div class="px-4 py-3 rounded-lg border border-outline-variant bg-surface peer-checked:bg-secondary-container peer-checked:text-on-secondary peer-checked:border-secondary font-label-lg text-label-lg transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">personal_injury</span>
+                            Trauma
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="emergency_type" type="radio" value="respiratory"/>
+<div class="px-4 py-3 rounded-lg border border-outline-variant bg-surface peer-checked:bg-secondary-container peer-checked:text-on-secondary peer-checked:border-secondary font-label-lg text-label-lg transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">air</span>
+                            Respiratory
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="emergency_type" type="radio" value="other"/>
+<div class="px-4 py-3 rounded-lg border border-outline-variant bg-surface peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary font-label-lg text-label-lg transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                            Other
+                        </div>
+</label>
+</div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Additional Notes (Optional)</label>
+<textarea class="w-full min-h-[80px] rounded-lg border-outline-variant bg-surface px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md transition-colors resize-y" placeholder="Briefly describe the situation, gate codes, or specific instructions..."></textarea>
+</div>
+<!-- Contextual Info Cards (Glassmorphism inspired) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md mt-stack-lg">
+<div class="bg-surface-container-lowest/80 backdrop-blur-md rounded-xl shadow-[0_4px_12px_rgba(0,93,172,0.05)] border border-outline-variant p-stack-md flex items-start gap-4">
+<div class="bg-primary-container text-on-primary-container p-2 rounded-lg shrink-0">
+<span class="material-symbols-outlined filled">ambulance</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-1">Nearby Ambulances</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">3 units available</p>
+<div class="mt-2 inline-flex items-center gap-1 bg-surface-variant text-primary px-2 py-1 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                            ~5 mins ETA
+                        </div>
+</div>
+</div>
+<div class="bg-surface-container-lowest/80 backdrop-blur-md rounded-xl shadow-[0_4px_12px_rgba(0,93,172,0.05)] border border-outline-variant p-stack-md flex items-start gap-4">
+<div class="bg-surface-variant text-on-surface-variant p-2 rounded-lg shrink-0">
+<span class="material-symbols-outlined filled">local_hospital</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-1">Suggested Hospital</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">City General Med Center</p>
+<p class="font-label-md text-label-md text-outline mt-1">2.4 miles away</p>
+</div>
+</div>
+</div>
+</form>
+</main>
+<!-- Floating Action Area for high-stakes button -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest/95 backdrop-blur-xl border-t border-outline-variant shadow-[0_-8px_24px_rgba(0,0,0,0.05)] p-4 md:px-8 z-40 pb-safe">
+<div class="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="text-center md:text-left hidden md:block">
+<p class="font-label-md text-label-md text-on-surface-variant">By requesting, you agree to dispatch terms.</p>
+</div>
+<button class="w-full md:w-auto min-w-[280px] h-[56px] rounded-xl bg-secondary text-on-secondary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-[0_8px_16px_rgba(182,23,30,0.2)] urgent-pulse hover:bg-secondary-container active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined filled">cell_tower</span>
+                Request Emergency Ambulance
+            </button>
+</div>
+</div>
+</body></html>
